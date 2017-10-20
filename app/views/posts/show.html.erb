@@ -1,0 +1,16 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+
+<!-- comments will fall here bruh -->
+<h2><%= @post.comments.count %></h2>
+<%= render :partial => @post.comments %>
+
+
+<% if user_signed_in? %>
+<h3>Reply to thread</h3>
+    <%= render 'comments/form' %>
+<% end %>
+
+<%= link_to 'Edit', edit_post_path(@post) %>
+<%= link_to 'Delete', post_path(@post), method: :delete , data: { confirm: "Are you sure?" }%>
+<%= link_to 'Home', root_path %>
