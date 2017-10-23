@@ -3,7 +3,7 @@
 
 <!-- comments will fall here bruh -->
 <h2><%= @post.comments.count %></h2>
-<%= render :partial => @post.comments %>
+<%= render @post.comments %>
 
 
 <% if user_signed_in? %>
