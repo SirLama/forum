@@ -7,11 +7,10 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@post.comments
 	end
 
 	def new
-		@comment = Comment.new(post_id: params[:post_id])
+		@post =Post.new
 	end
 
 	def create
