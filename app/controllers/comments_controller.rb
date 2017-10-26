@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :authenticate_user!, only:[:new, :edit]
 	
 	def create
 		@post =Post.find(params[:post_id])
@@ -20,7 +21,7 @@ class CommentsController < ApplicationController
 	def update
 		@post =Post.find(params[:post_id])
 		@comment =@post.comments.find(params[:id])
-		if @comment.updateparams[:comment].permit(:comment))
+		if @comment.update(params[:comment].permit(:comment))
 			redirect_to post_path(@post)
 		else
 			render 'edit'
@@ -28,7 +29,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@comment =Comment.find(params[:id])
+		@post =Post.find(params[:post_id])
 		@comment =@post.comments.find(params[:id])
 		@comment.destroy
 		redirect_to post_path(@post)
